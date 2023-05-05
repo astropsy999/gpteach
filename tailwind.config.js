@@ -12,4 +12,9 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist: [
+    'hover:border-red-500',
+    'hover:border-green-500',
+    'hover:border-blue-300',
+  ],
 };
