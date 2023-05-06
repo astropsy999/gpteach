@@ -2,31 +2,31 @@
   "react": {
     "href": "/learning/react",
     "logo": "/react-logo.png",
-    "info": "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Build encapsulated components that manage their own state, then compose them to make complex UIs.",
+    "info": "React робить створення інтерактивних інтерфейсів безболісним. Створюйте прості представлення для кожного стану вашої програми, і React ефективно оновлюватиме та відтворюватиме потрібні компоненти, коли ваші дані змінюватимуться. Створюйте інкапсульовані компоненти, які керують власним станом, а потім комбінуйте їх для створення складних інтерфейсів користувача.",
     "docs": [
       "https://react.dev/"
     ],
     "name": "React JS",
-    "hoverClass": "hover:border-blue-300"
+    "hoverClass": "hover:border-cyan-400"
   },
-  "vue": {
-    "href": "/learning/vue",
-    "logo": "/vue-logo.png",
-    "info": "Vue (pronounced /vjuː/, like view) is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be they simple or complex.",
+  "solid": {
+    "href": "/learning/solid",
+    "logo": "/solid-logo.png",
+    "info": "Ідея Solid полягає в тому, що ваш додаток складається з маленьких шматків, які служать будівельними блоками для додатків. Ці шматочки в основному є функціями, складовими поверхневого API.",
     "docs": [
-      "https://vuejs.org/"
+      "https://www.solidjs.com/"
     ],
-    "name": "Vue JS",
-    "hoverClass": "hover:border-green-500"
+    "name": "Solid JS",
+    "hoverClass": "hover:border-sky-600"
   },
-  "svelte": {
-    "href": "/learning/svelte",
-    "logo": "/svelte-logo.png",
-    "info": "Svelte is a radical new approach to building user interfaces. Whereas traditional frameworks like React and Vue do the bulk of their work in the browser, Svelte shifts that work into a compile step that happens when you build your app. Instead of using techniques like virtual DOM diffing, Svelte writes code that surgically updates the DOM when the state of your app changes.",
+  "php": {
+    "href": "/learning/php",
+    "logo": "/php-logo.png",
+    "info": "Популярна мова сценаріїв загального призначення, яка особливо підходить для веб-розробки. Швидкий, гнучкий і прагматичний PHP забезпечує все, від вашого блогу до найпопулярніших веб-сайтів у світі.",
     "docs": [
-      "https://svelte.dev/"
+      "https://www.php.net/"
     ],
-    "name": "Svelte",
-    "hoverClass": "hover:border-red-500"
+    "name": "PHP",
+    "hoverClass": "hover:border-indigo-400"
   }
 }

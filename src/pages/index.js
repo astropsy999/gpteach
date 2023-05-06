@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <h1 className="h-full flex justify-center items-center flex-col">
       <div>what do you want to learn?</div>
-      <div class="flex">{renderStacks()}</div>
+      <div className="flex">{renderStacks()}</div>
     </h1>
   );
 }

@@ -13,8 +13,8 @@ module.exports = {
   },
   plugins: [],
   safelist: [
-    'hover:border-red-500',
-    'hover:border-green-500',
-    'hover:border-blue-300',
+    'hover:border-cyan-400',
+    'hover:border-sky-600',
+    'hover:border-indigo-400',
   ],
 };
