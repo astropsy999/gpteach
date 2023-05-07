@@ -8,8 +8,8 @@ body,
   height: 100%;
 }
 
-.blinking-cursor:after {
-  content: '|';
+.blinking-cursor > :last-child:after {
+  content: '▊';
   animation: blink 1s steps(2, jump-none) infinite;
 }
 
