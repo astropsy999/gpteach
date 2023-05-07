@@ -1,8 +1,7 @@
-import Image from 'next/image';
-import stacks from '@/data/stack.json';
 import Header from '@/components/Header';
 import Message from '@/components/Message';
 import Prompt from '@/components/Prompt';
+import stacks from '@/data/stack.json';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Stack({ stack, stackKey }) {
@@ -13,19 +12,45 @@ export default function Stack({ stack, stackKey }) {
     chatRef.current.scrollTo(0, chatRef.current.scrollHeight);
   }, [messages]);
 
-  const onSubmit = (prompt) => {
+  const onSubmit = async (prompt) => {
     if (prompt.trim().length === 0) {
       return;
     }
-    setMessages([
-      ...messages,
-      {
-        id: new Date().toISOString(),
-        author: 'human',
-        avatar: '/YSpic.jpeg',
-        text: prompt,
+    setMessages((messages) => {
+      return [
+        ...messages,
+        {
+          id: new Date().toISOString(),
+          author: 'human',
+          avatar: '/YSpic.jpeg',
+          text: prompt,
+        },
+      ];
+    });
+
+    const response = await fetch('/api/completition', {
+      method: 'POST',
+      body: JSON.stringify({ prompt }),
+      headers: {
+        'Content-type': 'application/json',
       },
-    ]);
+    });
+    const json = await response.json();
+    if (response.ok) {
+      setMessages((messages) => {
+        return [
+          ...messages,
+          {
+            id: new Date().toISOString(),
+            author: 'ai',
+            avatar: '/logo-open-ai.png',
+            text: json.result,
+          },
+        ];
+      });
+    } else {
+      console.error(json?.error?.message);
+    }
   };
   return (
     <div className="h-full flex flex-col">
