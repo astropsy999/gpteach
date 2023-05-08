@@ -29,7 +29,6 @@ export default function Message({ text: initialText, avatar, idx, author }) {
           className={blinkingCursorClass}
           components={{
             code({ inline, className, children, style, ...props }) {
-              debugger;
               const match = /language-(\w+)/.exec(className || '');
               return !inline && match ? (
                 <SyntaxHighlighter

@@ -1,8 +1,9 @@
-import Header from '@/components/Header';
-import Message from '@/components/Message';
-import Prompt from '@/components/Prompt';
-import stacks from '@/data/stack.json';
+import stacks from '../../data/stack.json';
+import Header from '../../components/Header';
+import Message from '../../components/Message';
+import Prompt from '../../components/Prompt';
 import { useEffect, useRef, useState } from 'react';
+import { useUser } from '../../hooks/useUser';
 
 const SESSION_KEYS = [
   'u1-2023-04-13T15:36:20.424Z',
@@ -13,8 +14,24 @@ const SESSION_KEYS = [
 
 export default function Stack({ stack, stackKey }) {
   const [messages, setMessages] = useState([]);
-  const chatRef = useRef(null);
   const [activeSession, setActiveSession] = useState('');
+  const { user } = useUser();
+  const chatRef = useRef(null);
+
+  useEffect(() => {
+    const cleanChatHistory = async () => {
+      await fetch('/api/completion', {
+        method: 'DELETE',
+      });
+    };
+
+    cleanChatHistory();
+  }, []);
+  useEffect(() => {
+    if (user) {
+      setActiveSession(user.uid);
+    }
+  }, [user]);
 
   useEffect(() => {
     chatRef.current.scrollTo(0, chatRef.current.scrollHeight);
@@ -24,6 +41,7 @@ export default function Stack({ stack, stackKey }) {
     if (prompt.trim().length === 0) {
       return;
     }
+
     setMessages((messages) => {
       return [
         ...messages,
@@ -35,15 +53,19 @@ export default function Stack({ stack, stackKey }) {
         },
       ];
     });
-
-    const response = await fetch('/api/completion', {
+    /**
+     * Get answer from Chat GPT
+     */
+    const response = await fetch(`/api/completion?stack=${stackKey}`, {
       method: 'POST',
       body: JSON.stringify({ prompt }),
       headers: {
         'Content-type': 'application/json',
       },
     });
+
     const json = await response.json();
+
     if (response.ok) {
       setMessages((messages) => {
         return [
@@ -60,6 +82,7 @@ export default function Stack({ stack, stackKey }) {
       console.error(json?.error?.message);
     }
   };
+
   const handleSessionChange = async (e) => {
     const session = e.target.value;
 
@@ -75,11 +98,16 @@ export default function Stack({ stack, stackKey }) {
   return (
     <div className="h-full flex flex-col">
       <Header logo={stack.logo} info={stack.info} />
+      <div className="mt-4">Active ses: {activeSession}</div>
+      <div className="mt-4">Uid: {user?.uid}</div>
       <select
         onChange={handleSessionChange}
+        value={activeSession}
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-[200px] p-2.5 mt-5"
       >
-        <option value={''}>Choose session</option>
+        <option value={''} disabled={activeSession !== ''}>
+          Choose session
+        </option>
         {SESSION_KEYS.map((sk) => (
           <option key={sk} value={sk}>
             {sk}
@@ -88,6 +116,11 @@ export default function Stack({ stack, stackKey }) {
       </select>
       <hr className="my-4" />
       <div ref={chatRef} className="chat flex flex-col h-full overflow-auto">
+        {messages.length === 0 && (
+          <div className="bg-yellow-200 p-4 riunded-2xl">
+            Немає повідомлень, запитайте про те, що вас цікавить
+          </div>
+        )}
         {messages.map((message, i) => (
           <Message
             key={message.id}
@@ -107,6 +140,7 @@ export default function Stack({ stack, stackKey }) {
 
 export async function getStaticPaths() {
   const paths = Object.keys(stacks).map((key) => ({ params: { stack: key } }));
+
   return {
     paths,
     fallback: false,
@@ -115,6 +149,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   return {
-    props: { stack: stacks[params.stack], stackKey: params.stack },
+    props: {
+      stack: stacks[params.stack],
+      stackKey: params.stack,
+    },
   };
 }

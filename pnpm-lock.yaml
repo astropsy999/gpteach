@@ -5,6 +5,7 @@ specifiers:
   eslint: 8.39.0
   eslint-config-next: 13.3.4
   iron-session: ^6.3.1
+  lowdb: ^6.0.1
   next: 13.3.4
   openai: ^3.2.1
   postcss: 8.4.23
@@ -18,6 +19,7 @@ dependencies:
   eslint: 8.39.0
   eslint-config-next: 13.3.4_eslint@8.39.0
   iron-session: 6.3.1_next@13.3.4
+  lowdb: 6.0.1
   next: 13.3.4_biqbaboplfbrettd7655fr4n2y
   openai: 3.2.1
   react: 18.2.0
@@ -2122,6 +2124,13 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
+  /lowdb/6.0.1:
+    resolution: {integrity: sha512-1ktuKYLlQzAWwl4/PQkIr8JzNXgcTM6rAhpXaQ6BR+VwI98Q8ZwMFhBOn9u0ldcW3K/WWzhYpS3xyGTshgVGzA==}
+    engines: {node: '>=16'}
+    dependencies:
+      steno: 3.0.0
+    dev: false
+
   /lowlight/1.20.0:
     resolution: {integrity: sha512-8Ktj+prEb1RoCPkEOrPMYUN/nCggB7qAWe3a7OpMjWQkh3l2RD5wKRQ+o8Q8YuI9RG/xs95waaI/E6ym/7NsTw==}
     dependencies:
@@ -3073,6 +3082,11 @@ packages:
 
   /space-separated-tokens/2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
+    dev: false
+
+  /steno/3.0.0:
+    resolution: {integrity: sha512-uZtn7Ht9yXLiYgOsmo8btj4+f7VxyYheMt8g6F1ANjyqByQXEE2Gygjgenp3otHH1TlHsS4JAaRGv5wJ1wvMNw==}
+    engines: {node: '>=14.16'}
     dev: false
 
   /stop-iteration-iterator/1.0.0:
