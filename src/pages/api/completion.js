@@ -60,7 +60,7 @@ export default withNextSession(async (req, res) => {
         db.data.messageHistory[user.uid].splice(0, 2);
       }
 
-      db.write();
+      // db.write();
 
       return res.status(200).json({ result: aiResponse });
     } catch (e) {
@@ -90,7 +90,7 @@ export default withNextSession(async (req, res) => {
       const db = await dbConnect();
       db.data.messageHistory[user.uid] = [];
 
-      await db.write();
+      // await db.write();
 
       return res.status(200).json({ message: 'History cleared!' });
     }
