@@ -5,7 +5,7 @@ specifiers:
   eslint: 8.39.0
   eslint-config-next: 13.3.4
   iron-session: ^6.3.1
-  lowdb: ^6.0.1
+  lowdb: ^5.1.0
   next: 13.3.4
   openai: ^3.2.1
   postcss: 8.4.23
@@ -19,7 +19,7 @@ dependencies:
   eslint: 8.39.0
   eslint-config-next: 13.3.4_eslint@8.39.0
   iron-session: 6.3.1_next@13.3.4
-  lowdb: 6.0.1
+  lowdb: 5.1.0
   next: 13.3.4_biqbaboplfbrettd7655fr4n2y
   openai: 3.2.1
   react: 18.2.0
@@ -2124,9 +2124,9 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
-  /lowdb/6.0.1:
-    resolution: {integrity: sha512-1ktuKYLlQzAWwl4/PQkIr8JzNXgcTM6rAhpXaQ6BR+VwI98Q8ZwMFhBOn9u0ldcW3K/WWzhYpS3xyGTshgVGzA==}
-    engines: {node: '>=16'}
+  /lowdb/5.1.0:
+    resolution: {integrity: sha512-OEysJ2S3j05RqehEypEv3h6EgdV4Y7LTq7LngRNqe1IxsInOm66/sa3fzoI6mmqs2CC+zIJW3vfncGNv2IGi3A==}
+    engines: {node: '>=14.16'}
     dependencies:
       steno: 3.0.0
     dev: false
